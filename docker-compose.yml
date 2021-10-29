@@ -19,3 +19,15 @@ services:
     image: memcached
     ports:
       - 11211:11211
+
+  iut-dbm-mongodb:
+    image: mongo
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./.temp/iut-dbm-mongodb:/data
+      - ./iut-dbm:/iut-dbm
+    ports:
+      - 27017:27017
+
