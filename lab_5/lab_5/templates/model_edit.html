@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit {{ model.name }}</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<form method="POST">
+    <table>
+        <h1>Edit {{ model.name }}</h1>
+        <tbody>
+        <tr>
+            <td>Id</td>
+            <td>{{ model.id }}<input type="hidden" name="id" value="{{ model.id }}"/></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" value="{{ model.name }}"/></td>
+        </tr>
+        <tr>
+            <td>Save</td>
+            <td><input type="submit" value="Save"/></td>
+        </tr>
+        <tr>
+            <td>Delete</td>
+            <td><a href="/{{ type }}/delete/{{ model.id }}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

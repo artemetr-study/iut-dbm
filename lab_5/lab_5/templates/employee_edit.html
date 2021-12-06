@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit {{ model.name }}</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<form method="POST">
+    <table>
+        <h1>Edit {{ model.name }}</h1>
+        <tbody>
+        <tr>
+            <td>Id</td>
+            <td>{{ model.id }}<input type="hidden" name="id" value="{{ model.id }}"/></td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td><input type="text" name="lastname" value="{{ model.lastname }}"/></td>
+        </tr>
+        <tr>
+            <td>Firstname</td>
+            <td><input type="text" name="firstname" value="{{ model.firstname }}"/></td>
+        </tr>
+        <tr>
+            <td>Middlename</td>
+            <td><input type="text" name="middlename" value="{{ model.middlename }}"/></td>
+        </tr>
+        <tr>
+            <td>Birthday</td>
+            <td><input type="date" name="birthday" value="{{ model.birthday|date:'Y-m-d' }}"/></td>
+        </tr>
+        <tr>
+            <td>Hiring date</td>
+            <td><input type="date" name="hiring_date" value="{{ model.hiring_date|date:'Y-m-d' }}"/></td>
+        </tr>
+        <tr>
+            <td>Dismissal date</td>
+            <td><input type="date" name="dismissal_date" value="{{ model.dismissal_date|date:'Y-m-d' }}"/></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="number" min="0" name="salary" value="{{ model.salary }}"/></td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td><select name="position_id">
+                {% for position in positions %}
+                    <option value="{{ position.id }}" {% if position.id == model.position_id %}selected{% endif %}}>{{ position.name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Crew</td>
+            <td><select name="crew_id">
+                {% for crew in crews %}
+                    <option value="{{ crew.id }}" {% if crew.id == model.crew_id %}selected{% endif %}}>{{ crew.name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Save</td>
+            <td><input type="submit" value="Save"/></td>
+        </tr>
+        <tr>
+            <td>Delete</td>
+            <td><a href="/{{ type }}/delete/{{ model.id }}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

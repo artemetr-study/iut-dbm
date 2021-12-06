@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add {{ type }}</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<form method="POST">
+    <table>
+        <h1>Add {{ type }}</h1>
+        <tbody>
+        <tr>
+            <td>Lastname</td>
+            <td><input type="text" name="lastname" value=""/></td>
+        </tr>
+        <tr>
+            <td>Firstname</td>
+            <td><input type="text" name="firstname" value=""/></td>
+        </tr>
+        <tr>
+            <td>Middlename</td>
+            <td><input type="text" name="middlename" value=""/></td>
+        </tr>
+        <tr>
+            <td>Birthday</td>
+            <td><input type="date" name="birthday" value=""/></td>
+        </tr>
+        <tr>
+            <td>Hiring date</td>
+            <td><input type="date" name="hiring_date" value=""/></td>
+        </tr>
+        <tr>
+            <td>Dismissal date</td>
+            <td><input type="date" name="dismissal_date" value=""/></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="number" min="0" name="salary" value=""/></td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td><select name="position_id">
+                {% for position in positions %}
+                    <option value="{{ position.id }}">{{ position.name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Crew</td>
+            <td><select name="crew_id">
+                {% for crew in crews %}
+                    <option value="{{ crew.id }}" >{{ crew.name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Add</td>
+            <td><input type="submit" value="Add"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
